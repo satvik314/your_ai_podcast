@@ -19,7 +19,7 @@ set_api_key(API_KEY)
 st.title('Generate your Podcast Clip!')
 
 topic_name = st.text_input("Enter the topic name:")
-time = st.number_input("Enter the length of the podcast in minutes:", min_value=1.0, max_value=3.0, value=1.0, step=0.5,format="%.1f")
+time = st.number_input("Enter the length of the podcast in minutes:", min_value=1.0, max_value=3.0, value=0.5, step=0.5,format="%.1f")
 voice = st.radio(
         label="Choose a voice", options=['Rachel', 'Adam'], index=0, horizontal=True)
 
