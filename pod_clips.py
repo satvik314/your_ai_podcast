@@ -6,20 +6,22 @@ from langchain.prompts import (
 )
 from langchain.chat_models import ChatOpenAI
 from elevenlabs import generate, play, set_api_key
-import os
-from dotenv import load_dotenv
-load_dotenv()
 from elevenlabs.api.error import UnauthenticatedRateLimitError, RateLimitError
+import os
+# from dotenv import load_dotenv
+# load_dotenv()
 
-API_KEY = os.getenv("ELEVENLABS_API_KEY")
+# API_KEY = os.getenv("ELEVENLABS_API_KEY")
+os.environ["OPENAI_API_KEY"] = st.secrets("OPENAI_API_KEY")
+API_KEY = st.secrets["ELEVENLABS_API_KEY"]
 
 set_api_key(API_KEY)
 
 
-st.title('Generate your Podcast Clip!')
+st.title('🏃‍♂️ Generate your Workout Podcast!')
 
 topic_name = st.text_input("Enter the topic name:")
-time = st.number_input("Enter the length of the podcast in minutes:", min_value=1.0, max_value=3.0, value=0.5, step=0.5,format="%.1f")
+time = st.number_input("Enter the length of the podcast in minutes:", min_value=0.5, max_value=3.0, value=0.5, step=0.5,format="%.1f")
 voice = st.radio(
         label="Choose a voice", options=['Rachel', 'Adam'], index=0, horizontal=True)
 
