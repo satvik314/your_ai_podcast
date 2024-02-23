@@ -17,7 +17,7 @@ import os
 
 # set_api_key(API_KEY)
 
-os.environ['OPRNAI_API_KEY'] = st.secrets["OPERAI_API_KEY"]
+os.environ['OPRNAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 
 st.title('🏃‍♂️ Generate your Workout Podcast!')
 
