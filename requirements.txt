@@ -1,4 +1,4 @@
-elevenlabs==0.2.15
+elevenlabs
 streamlit
 langchain
 openai
