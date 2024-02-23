@@ -8,12 +8,12 @@ from langchain.chat_models import ChatOpenAI
 from elevenlabs import generate, play, set_api_key
 from elevenlabs.api.error import UnauthenticatedRateLimitError, RateLimitError
 import os
-# from dotenv import load_dotenv
-# load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
-# API_KEY = os.getenv("ELEVENLABS_API_KEY")
-os.environ["OPENAI_API_KEY"] = st.secrets("OPENAI_API_KEY")
-API_KEY = st.secrets["ELEVENLABS_API_KEY"]
+API_KEY = os.getenv("ELEVENLABS_API_KEY")
+# os.environ["OPENAI_API_KEY"] = st.secrets("OPENAI_API_KEY")
+# API_KEY = st.secrets["ELEVENLABS_API_KEY"]
 
 set_api_key(API_KEY)
 
@@ -60,26 +60,3 @@ if st.button("Make my clip!"):
         st.write(transcript)
 
 
-
-
-# audio = generate(
-#     text="Hi! I'm the world's most advanced text-to-speech system, made by elevenlabs.",
-#     voice="Bella"
-# )
-
-# play(audio)
-
-# if st.button("🔈 Generate Speech"):
-    # try:
-    #     audio = generate(text=text, voice=voice, model='eleven_multilingual_v1',
-    #                      api_key=API_KEY if API_KEY else st.secrets['API_KEY'])
-    #     st.audio(data=audio)
-    # except UnauthenticatedRateLimitError:
-    #     e = UnauthenticatedRateLimitError("Unauthenticated Rate Limit Error")
-    #     st.exception(e)
-
-    # except RateLimitError:
-    #     e = RateLimitError('Rate Limit')
-    #     st.exception(e)
-# else:
-#     st.write('Input the text and click Generate')
