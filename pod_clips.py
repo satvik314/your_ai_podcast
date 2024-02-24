@@ -4,7 +4,8 @@ from langchain.prompts import (
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate
 )
-from langchain.chat_models import ChatOpenAI
+# from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from elevenlabs import generate, play, set_api_key
 from elevenlabs.api.error import UnauthenticatedRateLimitError, RateLimitError
 import os
@@ -13,9 +14,9 @@ import os
 
 # API_KEY = os.getenv("ELEVENLABS_API_KEY")
 # os.environ["OPENAI_API_KEY"] = st.secrets("OPENAI_API_KEY")
-# API_KEY = st.secrets["ELEVENLABS_API_KEY"]
+API_KEY = st.secrets["ELEVENLABS_API_KEY"]
 
-# set_api_key(API_KEY)
+set_api_key(API_KEY)
 
 os.environ['OPRNAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 
@@ -27,7 +28,9 @@ voice = st.radio(
         label="Choose a voice", options=['Rachel', 'Adam'], index=0, horizontal=True)
 
 if st.button("Make my clip!"):
-    system_template = "Generate content for a podcast monologue on {topic_name} for an approx length of {time} minutes."
+    system_template = """Generate content for a podcast monologue on {topic_name} for an 
+    approx length of 10 seconds."""
+    # approx length of {time} minutes."""
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
 
     human_template="{text}"

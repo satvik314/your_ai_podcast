@@ -2,3 +2,4 @@ elevenlabs
 streamlit
 langchain
 openai
+langchain-openai
